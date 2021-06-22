@@ -1,0 +1,11 @@
+az login
+
+az group create --name rg-testing-123 --location CanadaCentral
+ 
+az deployment group create --resource-group rg-storagetesting-009 --template-file ./storage.bicep
+
+az deployment group create --resource-group rg-testing-123 --template-file ./keyvault.bicep
+
+az deployment group create --resource-group rg-testing-123 --template-file ./cosmosdb.bicep
+
+az bicep decompile --files ./storagedeploy.json
